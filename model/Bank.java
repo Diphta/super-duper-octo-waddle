@@ -5,16 +5,34 @@
  */
 package model;
 
+import org.omg.CORBA.Current;
+
 /**
  *
  * @author Tanja
  */
-public class Bank extends Account {
-    private long cashold;
-    private long totalBalance;
-    
-    public long getTotalBalance() {
-        //Kode hvor man retunere alle Costumers samlede balance
-        return totalBalance;
+public class Bank extends Account{
+    private Current account;
+    private Current cash;
+
+    public Bank() {
     }
+
+    public Current getAccount() {
+        return account;
+    }
+
+    public void setAccount(Current account) {
+        this.account = account;
+    }
+
+    public Current getCash() {
+        return cash;
+    }
+
+    public void setCash(Current cash) {
+        this.cash = cash;
+    }
+    
+    
 }
