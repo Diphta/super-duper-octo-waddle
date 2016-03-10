@@ -15,4 +15,29 @@ public class Account {
     private long balance;
     private long interest;
     private long overdraw;
+
+    public Account() {
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public int getRegNumber() {
+        return regNumber;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public long getInterest() {
+        return interest;
+    }
+
+    public long getOverdraw() {
+        return overdraw;
+    }
+    
+    
 }
