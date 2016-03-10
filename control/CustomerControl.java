@@ -5,6 +5,7 @@
  */
 package control;
 
+import model.Account;
 import model.Bank;
 
 /**
@@ -18,5 +19,8 @@ public class CustomerControl {
         this.bank = bank;
     }
     
+    public void transaction(Account account, long amount) {
+        account.setBalance(amount);
+    }
     
 }

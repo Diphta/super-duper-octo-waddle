@@ -5,6 +5,7 @@
  */
 package model;
 
+
 /**
  *
  * @author Tanja
@@ -15,12 +16,17 @@ public class Account {
     private long balance;
     private long interest;
     private long overdraw;
+   
 
 
     public Account() {
     }
 
-    public int getAccountNumber() {
+    public void setBalance(long balance) {
+        this.balance += balance;
+    }
+    
+      public int getAccountNumber() {
         return accountNumber;
     }
 
