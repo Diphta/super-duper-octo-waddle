@@ -12,27 +12,27 @@ import org.omg.CORBA.Current;
  * @author Tanja
  */
 public class Bank extends Account{
-    private Current account;
-    private Current cash;
+    private long cashHolding;
+    private long totalBalance;
 
     public Bank() {
     }
 
-    public Current getAccount() {
-        return account;
+    public long getCashHolding() {
+        return cashHolding;
     }
 
-    public void setAccount(Current account) {
-        this.account = account;
+    public void setCashHolding(long cashHolding) {
+        this.cashHolding = cashHolding;
     }
 
-    public Current getCash() {
-        return cash;
+    public long getTotalBalance() {
+        return totalBalance;
     }
 
-    public void setCash(Current cash) {
-        this.cash = cash;
+    public void setTotalBalance(long totalBalance) {
+        this.totalBalance = totalBalance;
     }
+
     
-    
-}
+    }

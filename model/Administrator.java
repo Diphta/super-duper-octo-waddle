@@ -10,11 +10,5 @@ package model;
  * @author Tanja
  */
 public class Administrator extends Account {
-    private long cashold;
-    private long totalBalance;
-    
-    public long getTotalBalance() {
-        //Kode hvor man retunere alle Costumers samlede balance
-        return totalBalance;
-    }
+    private int
 }
