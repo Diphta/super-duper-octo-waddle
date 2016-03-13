@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class DBHandler {
     String url = "jdbc:mysql://localhost:3306";

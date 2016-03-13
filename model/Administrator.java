@@ -7,8 +7,8 @@ package model;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class Administrator extends Account {
-    private int
+    
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class Costumer {
 
@@ -30,7 +30,9 @@ public class Costumer {
     public ArrayList<Account> getKonti() {
         return konti;
     }
-
+    public void addAccount() {
+        
+    }
     
     
     

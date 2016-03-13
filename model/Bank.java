@@ -5,15 +5,15 @@
  */
 package model;
 
-import org.omg.CORBA.Current;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class Bank extends Account{
     private long cashHolding;
     private long totalBalance;
+    
 
     public Bank() {
     }

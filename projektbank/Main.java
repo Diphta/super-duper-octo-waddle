@@ -4,7 +4,7 @@ package projektbank;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class Main {
 

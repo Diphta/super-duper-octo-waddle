@@ -10,7 +10,7 @@ import model.Bank;
 
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class CustomerControl {
     Bank bank;

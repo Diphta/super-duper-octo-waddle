@@ -3,20 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
-
-import model.Bank;
+package model;
 
 /**
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class AdminControl {
-    Bank bank;
-
-    public AdminControl(Bank bank) {
-        this.bank = bank;
+public class Saving extends Account {
+    boolean transferCheck = false;
+    
+    public void transfer() {
+        
     }
-    
-    
 }

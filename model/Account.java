@@ -6,9 +6,10 @@
 package model;
 
 
+
 /**
  *
- * @author Tanja
+ * @author Tanja,Philip,Simon & Dino
  */
 public class Account {
     private int accountNumber;
@@ -16,7 +17,7 @@ public class Account {
     private long balance;
     private long interest;
     private long overdraw;
-   
+    
 
 
     public Account() {
