@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Customer;
 
@@ -41,5 +42,25 @@ public class CustomerHandler {
            System.out.println("SQLException" + ex.getMessage());
        }
              
+    }
+    
+    public Customer lookUpCustomer(String search) {
+        Customer customer = null;
+        try {
+            String statement;
+            statement = "SELECT * FROM bankCustomer WHERE custmrName LIKE '" + search+ "';";
+            System.out.println(statement);
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            
+            while (rs.next()) {
+                customer = new Customer(rs.getString("custmrName"), rs.getInt("phone"), rs.getString("email"), 
+                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"));
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+        }
+        return customer;
     }
 }
