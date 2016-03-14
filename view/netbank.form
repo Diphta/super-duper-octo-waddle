@@ -68,19 +68,18 @@
                               <Component id="usernameLoginField" min="-2" pref="169" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="passwordLoginField" min="-2" pref="169" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="naestvedBankLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="loginButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passwordLoginField" min="-2" pref="169" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="182" max="32767" attributes="0"/>
+                      <EmptySpace pref="264" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -98,7 +97,7 @@
                       <Component id="passwordLoginField" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="188" max="32767" attributes="0"/>
+                      <EmptySpace pref="234" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -124,6 +123,8 @@
             </Component>
             <Component class="javax.swing.JTextField" name="usernameLoginField">
             </Component>
+            <Component class="javax.swing.JPasswordField" name="passwordLoginField">
+            </Component>
             <Component class="javax.swing.JButton" name="loginButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login"/>
@@ -131,8 +132,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JPasswordField" name="passwordLoginField">
             </Component>
           </SubComponents>
         </Container>

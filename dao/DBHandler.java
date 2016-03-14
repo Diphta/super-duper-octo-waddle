@@ -22,6 +22,8 @@ public class DBHandler {
     String schema = "/bankProjekt";
     String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     Connection conn;
+    //Auto-Commit til false
+    
     private DBHandler() {
         try {
             connect();

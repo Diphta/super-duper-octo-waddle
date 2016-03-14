@@ -69,7 +69,7 @@ public class CustomerHandler {
         boolean check = false;
         DBHandler dbh = DBHandler.getInstance();
         Statement stm = (Statement) dbh.getConn().createStatement();
-        String sql = "SELECT * FROM user WHERE public.name = '" + username + "' AND password = '" + password + "'";
+        String sql = "SELECT * FROM bankCustomer WHERE username = '" + username + "' AND psword = '" + password + "'";
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {
             check = true;

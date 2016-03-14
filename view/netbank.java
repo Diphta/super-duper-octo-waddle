@@ -6,6 +6,7 @@
 package view;
 
 import dao.CustomerHandler;
+import java.awt.CardLayout;
 import model.Administrator;
 import model.Bank;
 import model.Customer;
@@ -46,8 +47,8 @@ public class netbank extends javax.swing.JFrame {
         naestvedBankLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameLoginField = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
         passwordLoginField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
         adminPanel = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,6 +81,7 @@ public class netbank extends javax.swing.JFrame {
         accType = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         costumorKontiPanel = new javax.swing.JPanel();
         customerNameLable = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -111,6 +113,11 @@ public class netbank extends javax.swing.JFrame {
         passwordLabel.setText("Password");
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -128,15 +135,14 @@ public class netbank extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(usernameLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(loginButton))
+                        .addGap(167, 167, 167)
+                        .addComponent(naestvedBankLabel))
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(naestvedBankLabel)))
-                .addContainerGap(182, Short.MAX_VALUE))
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginButton)
+                            .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +158,7 @@ public class netbank extends javax.swing.JFrame {
                 .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         jPanel2.add(loginPanel, "card2");
@@ -284,37 +290,45 @@ public class netbank extends javax.swing.JFrame {
 
         jLabel9.setText("Username");
 
+        jLabel10.setText("Password");
+
         javax.swing.GroupLayout newCostumerPanelLayout = new javax.swing.GroupLayout(newCostumerPanel);
         newCostumerPanel.setLayout(newCostumerPanelLayout);
         newCostumerPanelLayout.setHorizontalGroup(
             newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createSequentialGroup()
                 .addComponent(accesInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
                 .addComponent(createCustomer))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createSequentialGroup()
+            .addGroup(newCostumerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(createPswrd)
-                        .addComponent(createEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CreatePhone)
-                        .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(createName, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                    .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
-                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(createRegnr, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(createBalance, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(createAccount, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(accType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 156, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createSequentialGroup()
+                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(createPswrd)
+                                .addComponent(createEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CreatePhone)
+                                .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(createName, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(createRegnr, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(createBalance, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(createAccount, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(accType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 156, Short.MAX_VALUE))))
+                    .addGroup(newCostumerPanelLayout.createSequentialGroup()
+                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         newCostumerPanelLayout.setVerticalGroup(
@@ -331,31 +345,33 @@ public class netbank extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newCostumerPanelLayout.createSequentialGroup()
-                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CreatePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(createBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(createEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(accType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
+                        .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addGap(2, 2, 2)
+                        .addComponent(CreatePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(createEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(accType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createPswrd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accesInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(createCustomer))
@@ -485,6 +501,22 @@ public class netbank extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        try {
+            String username = usernameLoginField.getText();
+            String password = new String(passwordLoginField.getPassword());
+            if(CustomerHandler.getInstance().checkLogin(username, password)) {
+                System.out.println("access granted");
+                CardLayout cl = (CardLayout) jPanel2.getLayout();
+                cl.next(jPanel2);
+            } else { 
+                System.out.println("access denied");
+            }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,6 +575,7 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
