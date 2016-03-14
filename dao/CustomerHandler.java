@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import model.Customer;
 
 /**
@@ -63,4 +64,20 @@ public class CustomerHandler {
         }
         return customer;
     }
+    
+    public boolean checkLogin(String username, String password) throws SQLException {
+        boolean check = false;
+        DBHandler dbh = DBHandler.getInstance();
+        Statement stm = (Statement) dbh.getConn().createStatement();
+        String sql = "SELECT * FROM user WHERE public.name = '" + username + "' AND password = '" + password + "'";
+        ResultSet rs = stm.executeQuery(sql);
+        while (rs.next()) {
+            check = true;
+            System.out.println("works");
+        }
+        if (check == false) {
+            System.out.println("wrong password");
+        }
+        return check;
+   }
 }

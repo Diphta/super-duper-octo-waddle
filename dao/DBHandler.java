@@ -45,4 +45,10 @@ public class DBHandler {
         Class.forName(JDBC_DRIVER);
         conn = DriverManager.getConnection(url + schema, user, pswrd);
 }
+
+    public Connection getConn() {
+        return conn;
+    }
+    
+    
 }
