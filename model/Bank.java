@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -13,9 +15,10 @@ package model;
 public class Bank extends Account{
     private long cashHolding;
     private long totalBalance;
-    
+    private ArrayList<Customer> customers;      
 
     public Bank() {
+        customers = new ArrayList<>();
     }
 
     public long getCashHolding() {

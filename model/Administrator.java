@@ -5,6 +5,7 @@
  */
 package model;
 
+import dao.CustomerHandler;
 import java.util.ArrayList;
 
 /**
@@ -12,15 +13,15 @@ import java.util.ArrayList;
  * @author Tanja,Philip,Simon & Dino
  */
 public class Administrator extends Account {
-    private ArrayList<Costumer>costumer;
+    private ArrayList<Customer> customer;
     private double intrest;
     private long overdraw;
 
     public Administrator() {
     }
     
-    public void addCostumer(){
-        
+    public void addCustomer(Customer customer){
+        CustomerHandler.getInstance().saveCustomer(customer);
     } 
     
     public void addAccount(){
