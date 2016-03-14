@@ -18,6 +18,7 @@ import model.Customer;
 public class netbank extends javax.swing.JFrame {
     Bank bank;
     Administrator admin;
+    private String loginErrorMessage = "Ugyldigt brugernavn og/eller kodeord.";
     /**
      * Creates new form netbank
      */
@@ -49,6 +50,7 @@ public class netbank extends javax.swing.JFrame {
         usernameLoginField = new javax.swing.JTextField();
         passwordLoginField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
+        loginErrorLabel = new javax.swing.JLabel();
         adminPanel = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -119,6 +121,8 @@ public class netbank extends javax.swing.JFrame {
             }
         });
 
+        loginErrorLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -141,7 +145,10 @@ public class netbank extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(loginButton)
-                            .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(264, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -158,8 +165,12 @@ public class netbank extends javax.swing.JFrame {
                 .addComponent(passwordLoginField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(183, Short.MAX_VALUE))
         );
+
+        loginErrorLabel.getAccessibleContext().setAccessibleName("");
 
         jPanel2.add(loginPanel, "card2");
 
@@ -511,6 +522,7 @@ public class netbank extends javax.swing.JFrame {
                 cl.next(jPanel2);
             } else { 
                 System.out.println("access denied");
+                loginErrorLabel.setText(loginErrorMessage);
             }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -597,6 +609,7 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel loginErrorLabel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel naestvedBankLabel;
     private javax.swing.JLabel nameLabel;
