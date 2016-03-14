@@ -9,7 +9,7 @@ package model;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Saving extends Account {
+public class Saving {
     boolean transferCheck = false;
     
     public void transfer() {

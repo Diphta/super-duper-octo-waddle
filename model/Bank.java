@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Bank extends Account{
+public class Bank {
     private long cashHolding;
     private long totalBalance;
     private ArrayList<Customer> customers;      

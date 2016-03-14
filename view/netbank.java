@@ -5,9 +5,12 @@
  */
 package view;
 
+import dao.AccountHandler;
 import dao.CustomerHandler;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.Account;
 import model.Administrator;
 import model.Bank;
 import model.Customer;
@@ -95,6 +98,7 @@ public class netbank extends javax.swing.JFrame {
         actionBox = new javax.swing.JComboBox();
         selectAction = new javax.swing.JButton();
         transactionCancel = new javax.swing.JButton();
+        accountTypeBox = new javax.swing.JComboBox();
         receipt = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -150,7 +154,7 @@ public class netbank extends javax.swing.JFrame {
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +172,7 @@ public class netbank extends javax.swing.JFrame {
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         loginErrorLabel.getAccessibleContext().setAccessibleName("");
@@ -228,7 +232,7 @@ public class netbank extends javax.swing.JFrame {
                             .addComponent(jTextField5))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelLayout.createSequentialGroup()
-                        .addGap(0, 147, Short.MAX_VALUE)
+                        .addGap(0, 12, Short.MAX_VALUE)
                         .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -246,7 +250,7 @@ public class netbank extends javax.swing.JFrame {
                 .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -413,6 +417,8 @@ public class netbank extends javax.swing.JFrame {
 
         transactionCancel.setText("Cancel last transaction ");
 
+        accountTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Type", "Saving", "Current" }));
+
         javax.swing.GroupLayout customerKontiPanelLayout = new javax.swing.GroupLayout(customerKontiPanel);
         customerKontiPanel.setLayout(customerKontiPanelLayout);
         customerKontiPanelLayout.setHorizontalGroup(
@@ -420,7 +426,7 @@ public class netbank extends javax.swing.JFrame {
             .addGroup(customerKontiPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
+                    .addGroup(customerKontiPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(transactionCancel))
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
@@ -428,21 +434,21 @@ public class netbank extends javax.swing.JFrame {
                             .addComponent(actionBox, 0, 304, Short.MAX_VALUE)
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(selectAction, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
+                                .addGap(0, 28, Short.MAX_VALUE)
                                 .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                                        .addGap(0, 62, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
                                         .addComponent(customerNameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(17, 17, 17))
-                                    .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                                        .addComponent(selectAction, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(newAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
+                                        .addComponent(accountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(newAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
         );
         customerKontiPanelLayout.setVerticalGroup(
             customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,7 +467,9 @@ public class netbank extends javax.swing.JFrame {
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
                         .addComponent(customerNameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newAccount)
+                        .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(newAccount)
+                            .addComponent(accountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(transactionCancel))
         );
@@ -543,11 +551,15 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void newAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAccountActionPerformed
+        String accountName = JOptionPane.showInputDialog("Please enter a name for your account");
+        Account account = new Account(NORMAL, 4700, 0, 2, accountName, (String)accountTypeBox.getSelectedItem());
+        AccountHandler.getInstance().saveAccount(account);
         JTextField textField = new JTextField("");
         textField.setBounds(6, 75, 304, 30);
         customerKontiPanel.add(textField);
         customerKontiPanel.revalidate();
         customerKontiPanel.repaint();
+        
     }//GEN-LAST:event_newAccountActionPerformed
 
     /**
@@ -589,6 +601,7 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JTextField CreatePhone;
     private javax.swing.JComboBox accType;
     private javax.swing.JComboBox accesInfo;
+    private javax.swing.JComboBox accountTypeBox;
     private javax.swing.JComboBox actionBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JTextField createAccount;

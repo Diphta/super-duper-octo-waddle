@@ -9,7 +9,7 @@ package model;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Current extends Account {
+public class Current {
     
     public void transfer() {
         

@@ -17,10 +17,17 @@ public class Account {
     private long balance;
     private long interest;
     private long overdraw;
-    
+    private int customerId;
+    private String accountName;
+    private String accountType;
 
-
-    public Account() {
+    public Account(int accountNumber, int regNumber, long balance, int customerId, String accountName, String accountType) {
+        this.accountNumber = accountNumber;
+        this.regNumber = regNumber;
+        this.balance = balance;
+        this.customerId = customerId;
+        this.accountName = accountName;
+        this.accountType = accountType;
     }
 
     public void setBalance(long balance) {
@@ -45,6 +52,18 @@ public class Account {
 
     public long getOverdraw() {
         return overdraw;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public String getAccountName() {
+        return accountName;
     }
     
     

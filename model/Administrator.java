@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Administrator extends Account {
+public class Administrator {
     private ArrayList<Customer> customer;
     private double intrest;
     private long overdraw;
