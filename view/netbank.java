@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import model.Administrator;
 import model.Bank;
 import model.Customer;
+import dao.CustomerHandler;
 
 /**
  *
@@ -499,6 +500,20 @@ public class netbank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+     try {
+            String username = usernameLoginField.getText();
+            String password = new String(passwordLoginField.getPassword());
+            if(checkLogin(username, password)) {
+                System.out.println("access granted");
+            } else {
+                System.out.println("access denied");
+            }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+     
+        
         jLabel4.setText(""+usernameLoginField);
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.next(jPanel2);
