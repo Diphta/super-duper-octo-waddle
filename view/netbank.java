@@ -5,17 +5,26 @@
  */
 package view;
 
+import model.Administrator;
+import model.Bank;
+import model.Customer;
+
 /**
  *
  * @author Tanja,Philip,Simon & Dino
  */
 public class netbank extends javax.swing.JFrame {
-
+    Bank bank;
+    Administrator admin;
     /**
      * Creates new form netbank
      */
     public netbank() {
         initComponents();
+        bank = new Bank();
+        admin = new Administrator();
+        Customer cust = new Customer("Karl Johansen", 20495867, "karl@gmail.com", "Karl2452", "eds222", "Customer");
+        admin.addCustomer(cust);
     }
 
     /**
