@@ -5,6 +5,7 @@
  */
 package view;
 
+import dao.CustomerHandler;
 import model.Administrator;
 import model.Bank;
 import model.Customer;
@@ -25,6 +26,9 @@ public class netbank extends javax.swing.JFrame {
         admin = new Administrator();
         Customer cust = new Customer("Karl Johansen", 20495867, "karl@gmail.com", "Karl2452", "eds222", "Customer");
         admin.addCustomer(cust);
+        cust = CustomerHandler.getInstance().lookUpCustomer("Simon");
+        System.out.println(cust.getName() + "\t" + cust.getPhone() + "\t" + cust.getEmail() + "\t" + cust.getUsername());
+        
     }
 
     /**
