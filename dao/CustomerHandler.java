@@ -80,4 +80,24 @@ public class CustomerHandler {
         }
         return check;
    }
+    
+    public Customer proceedLogin(String username, String password) {
+        Customer customer = null;
+        try {
+            String statement;
+            statement = "SELECT * FROM bankCustomer WHERE username LIKE '" + username + "' AND psword = '" + password + "';";
+            System.out.println(statement);
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            
+            while (rs.next()) {
+                customer = new Customer(rs.getString("custmrName"), rs.getInt("phone"), rs.getString("email"), 
+                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"));
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+        }
+        return customer;
+    }
 }

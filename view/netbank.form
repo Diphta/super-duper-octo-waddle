@@ -536,7 +536,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="costumorKontiPanel">
+        <Container class="javax.swing.JPanel" name="customerKontiPanel">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[560, 360]"/>
