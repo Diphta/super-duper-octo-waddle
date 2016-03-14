@@ -7,6 +7,7 @@ package view;
 
 import dao.CustomerHandler;
 import java.awt.CardLayout;
+import javax.swing.JTextField;
 import model.Administrator;
 import model.Bank;
 import model.Customer;
@@ -400,6 +401,11 @@ public class netbank extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextPane2);
 
         newAccount.setText("New account");
+        newAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newAccountActionPerformed(evt);
+            }
+        });
 
         actionBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -419,15 +425,15 @@ public class netbank extends javax.swing.JFrame {
                         .addComponent(transactionCancel))
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(actionBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(actionBox, 0, 304, Short.MAX_VALUE)
                             .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(customerKontiPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                                        .addGap(0, 97, Short.MAX_VALUE)
+                                        .addGap(0, 62, Short.MAX_VALUE)
                                         .addComponent(customerNameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(17, 17, 17))
                                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
@@ -447,7 +453,7 @@ public class netbank extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(actionBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(selectAction))
@@ -535,6 +541,14 @@ public class netbank extends javax.swing.JFrame {
                 e.printStackTrace();
             }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void newAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAccountActionPerformed
+        JTextField textField = new JTextField("");
+        textField.setBounds(6, 75, 304, 30);
+        customerKontiPanel.add(textField);
+        customerKontiPanel.revalidate();
+        customerKontiPanel.repaint();
+    }//GEN-LAST:event_newAccountActionPerformed
 
     /**
      * @param args the command line arguments
