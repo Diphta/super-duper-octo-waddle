@@ -30,6 +30,11 @@ public class Account {
         this.accountType = accountType;
     }
     
+ 
+    public String toStringBox() {
+        return accountName + "\t" + accountNumber;
+    }
+    
     @Override
     public String toString() {
         return "Account Number: " + accountNumber + "\nReg. nr: " + regNumber + "\nBalance: "
@@ -71,6 +76,7 @@ public class Account {
     public String getAccountName() {
         return accountName;
     }
+    
     
     
 }
