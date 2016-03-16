@@ -48,6 +48,7 @@ public class netbank extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
@@ -58,10 +59,10 @@ public class netbank extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         loginErrorLabel = new javax.swing.JLabel();
         adminPanel = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        customerSearchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        customerField = new javax.swing.JTextArea();
+        searchButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -180,13 +181,18 @@ public class netbank extends javax.swing.JFrame {
 
         adminPanel.setPreferredSize(new java.awt.Dimension(460, 360));
 
-        jTextField3.setText("Søg kunde");
+        customerSearchField.setText("Søg kunde");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        customerField.setColumns(20);
+        customerField.setRows(5);
+        jScrollPane1.setViewportView(customerField);
 
-        jButton2.setText("Søg");
+        searchButton.setText("Søg");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("New Costumer");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -215,9 +221,9 @@ public class netbank extends javax.swing.JFrame {
             adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adminPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(customerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(searchButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -264,8 +270,8 @@ public class netbank extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(22, 22, 22)
                 .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(customerSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -588,6 +594,11 @@ public class netbank extends javax.swing.JFrame {
         cl.next(jPanel2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        Customer customer = CustomerHandler.getInstance().lookUpCustomer(customerSearchField.getText());
+        customerField.setText(customer.toString());
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -638,9 +649,10 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JTextField createPswrd;
     private javax.swing.JTextField createRegnr;
     private javax.swing.JTextField createUsername;
+    private javax.swing.JTextArea customerField;
     private javax.swing.JPanel customerKontiPanel;
     private javax.swing.JLabel customerNameLable;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField customerSearchField;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -660,9 +672,8 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextPane jTextPane1;
@@ -677,6 +688,7 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordLoginField;
     private javax.swing.JPanel receipt;
+    private javax.swing.JButton searchButton;
     private javax.swing.JButton selectAction;
     private javax.swing.JButton transactionCancel;
     private javax.swing.JLabel usernameLabel;

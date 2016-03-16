@@ -29,6 +29,12 @@ public class Customer {
         this.password = password;
         this.accessInfo = accessInfo;
     }
+    
+     @Override
+    public String toString() {
+        return "Name: " + name + "\nPhone: " + phone + "\nEmail: " + email
+                + "\nUsername: " + username + "\nPassword: " + password;
+    }
 
     public String getName(){
         return name;
@@ -61,7 +67,7 @@ public class Customer {
         return accessInfo;
     }
     
-    
+   
     
     
 }
