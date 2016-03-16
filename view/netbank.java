@@ -582,9 +582,9 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_LogUserOutActionPerformed
 
     private void createCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomerActionPerformed
-        Customer customer = new Customer(createName.getText(), Integer.parseInt(CreatePhone.getText()), createEmail.getText(), 
-                createUsername.getText(), createPswrd.getText(), "Customer");
-        CustomerHandler.getInstance().saveCustomer(customer);
+//        Customer customer = new Customer(createName.getText(), Integer.parseInt(CreatePhone.getText()), createEmail.getText(), 
+//                createUsername.getText(), createPswrd.getText(), "Customer");
+//        CustomerHandler.getInstance().saveCustomer(customer);
         Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, WIDTH, "Ny konto", "Current");
         AccountHandler.getInstance().saveAccount(account);
     }//GEN-LAST:event_createCustomerActionPerformed
@@ -595,8 +595,13 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String str = "";
         Customer customer = CustomerHandler.getInstance().lookUpCustomer(customerSearchField.getText());
-        customerField.setText(customer.toString());
+        str = customer.toString() + "\n";
+        for (Account acc : AccountHandler.getInstance().lookUpAccount(customer.getIdCustmr())) {
+            str += "\n" + acc.toString() + "\n";
+        }
+        customerField.setText(str);
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**

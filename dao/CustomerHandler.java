@@ -55,7 +55,7 @@ public class CustomerHandler {
             
             while (rs.next()) {
                 customer = new Customer(rs.getString("custmrName"), rs.getInt("phone"), rs.getString("email"), 
-                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"));
+                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"), rs.getInt("idCustmr"));
             }
             
             
@@ -91,7 +91,7 @@ public class CustomerHandler {
             
             while (rs.next()) {
                 customer = new Customer(rs.getString("custmrName"), rs.getInt("phone"), rs.getString("email"), 
-                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"));
+                        rs.getString("username"), rs.getString("psword"), rs.getString("accesInfo"), rs.getInt("idCustmr"));
             }
             
             

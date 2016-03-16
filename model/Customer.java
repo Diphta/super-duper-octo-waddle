@@ -20,14 +20,16 @@ public class Customer {
     private String password;
     private ArrayList<Account> konti;
     private String accessInfo;
+    private int idCustmr;
 
-    public Customer(String name, int phone, String email, String username, String password, String accessInfo) {
+    public Customer(String name, int phone, String email, String username, String password, String accessInfo, int idCustmr) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.username = username;
         this.password = password;
         this.accessInfo = accessInfo;
+        this.idCustmr = idCustmr;
     }
     
      @Override
@@ -65,6 +67,10 @@ public class Customer {
 
     public String getAccessInfo() {
         return accessInfo;
+    }
+
+    public int getIdCustmr() {
+        return idCustmr;
     }
     
    

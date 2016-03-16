@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Account;
 
 
@@ -64,6 +65,26 @@ public class AccountHandler {
             
         }
         return accNumber;
+    }
+    
+    public ArrayList<Account> lookUpAccount(int search) {
+        ArrayList<Account> accounts = new ArrayList<>();
+        try {
+            String statement;
+            statement = "SELECT * FROM account WHERE idCustmr  LIKE '" + search+ "';";
+            System.out.println(statement);
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt("accNumber"), 4700, rs.getLong("balance"), rs.getInt("idCustmr"), rs.getString("accName"), rs.getString("accType"));
+                accounts.add(acc);
+            }
+            
+            
+        } catch (SQLException ex) {
+            
+        }
+        return accounts;
     }
     
 }

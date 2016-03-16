@@ -29,6 +29,12 @@ public class Account {
         this.accountName = accountName;
         this.accountType = accountType;
     }
+    
+    @Override
+    public String toString() {
+        return "Account Number: " + accountNumber + "\nReg. nr: " + regNumber + "\nBalance: "
+                + balance + "\nAccount Name: " + accountName + "\n Account type: " + accountType;
+    }
 
     public void setBalance(long balance) {
         this.balance += balance;
