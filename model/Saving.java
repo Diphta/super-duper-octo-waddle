@@ -9,8 +9,12 @@ package model;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Saving {
+public class Saving extends Account {
     boolean transferCheck = false;
+
+    public Saving(int accountNumber, int regNumber, long balance, int customerId, String accountName, String accountType) {
+        super(accountNumber, regNumber, balance, customerId, accountName, accountType);
+    }
     
     public void transfer() {
         

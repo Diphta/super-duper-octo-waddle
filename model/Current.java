@@ -9,7 +9,11 @@ package model;
  *
  * @author Tanja,Philip,Simon & Dino
  */
-public class Current {
+public class Current extends Account {
+
+    public Current(int accountNumber, int regNumber, long balance, int customerId, String accountName, String accountType) {
+        super(accountNumber, regNumber, balance, customerId, accountName, accountType);
+    }
     
     public void transfer() {
         
