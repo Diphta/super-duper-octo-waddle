@@ -100,4 +100,24 @@ public class CustomerHandler {
         }
         return customer;
     }
+    
+    public int customerNumber() {
+        int custNumber = 0;
+        try {
+            String statement;
+            statement = "SELECT idCustmr FROM bankCustomer;";
+            System.out.println(statement);
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            
+            while (rs.next()) {
+                System.out.println(rs.getString("idCustmr"));
+                custNumber = rs.getInt("idCustmr");
+            }
+            custNumber++;
+            
+        } catch (SQLException ex) {
+            
+        }
+        return custNumber;
+    }
 }
