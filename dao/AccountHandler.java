@@ -87,4 +87,22 @@ public class AccountHandler {
         return accounts;
     }
     
+    public void depositToAcc(Account account) {
+        String stmt1;
+        String stmt2;
+        String stmt3;
+        stmt1 = "begin;";
+        stmt2 = "update account set balance = " + account.getBalance() +  " where accnumber = " + account.getAccountNumber() + ";";
+        stmt3 = "commit;";
+        System.out.println(stmt1 + stmt2 + stmt3);
+        try {
+           DBHandler.getInstance().conn.createStatement().executeUpdate(stmt1);
+           DBHandler.getInstance().conn.createStatement().executeUpdate(stmt2);
+           DBHandler.getInstance().conn.createStatement().executeUpdate(stmt3);
+       } catch (SQLException ex) {
+           System.out.println(stmt2);
+           System.out.println("SQLException" + ex.getMessage());
+       }
+    }
+    
 }

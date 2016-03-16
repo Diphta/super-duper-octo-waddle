@@ -624,7 +624,7 @@ public class netbank extends javax.swing.JFrame {
         str = customer.toString() + "\n";
         for (Account acc : AccountHandler.getInstance().lookUpAccount(customer.getIdCustmr())) {
             str += "\n" + acc.toString() + "\n";
-            accountBox.addItem(acc.toStringBox());
+            accountBox.addItem(acc);
         }
         customerField.setText(str);
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -632,6 +632,7 @@ public class netbank extends javax.swing.JFrame {
     private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
         Account account = (Account) accountBox.getSelectedItem();
         account.setBalance(Integer.parseInt(depositField.getText()));
+        AccountHandler.getInstance().depositToAcc(account);
     }//GEN-LAST:event_depositButtonActionPerformed
 
     /**
