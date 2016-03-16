@@ -729,6 +729,7 @@ public class netbank extends javax.swing.JFrame {
         cl.next(jPanel2);
         for (Account acc : bank.getCostumer(0).getAccounts()) {
            fromOwnAccountBox.addItem(acc); 
+           toOwnAccountBox.addItem(acc);
         }
         
     }//GEN-LAST:event_transactionButtonActionPerformed

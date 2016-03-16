@@ -31,12 +31,13 @@ public class Account {
     }
     
  
-    public String toStringBox() {
-        return accountName + "\t" + accountNumber;
-    }
-    
     @Override
     public String toString() {
+        return accountName + "\t" + accountNumber + "\t" + balance + "kr.";
+    }
+    
+    
+    public String toStringAll() {
         return "Account Number: " + accountNumber + "\nReg. nr: " + regNumber + "\nBalance: "
                 + balance + "\nAccount Name: " + accountName + "\n Account type: " + accountType;
     }

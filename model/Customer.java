@@ -45,9 +45,6 @@ public class Customer {
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
-    public void addAccount(Account account) {
-        accounts.add(account);
-    }
 
     public int getPhone() {
         return phone;
