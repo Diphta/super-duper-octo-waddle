@@ -5,8 +5,10 @@
  */
 package dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Account;
+
 
 
 /**
@@ -43,4 +45,25 @@ public class AccountHandler {
        }
              
     }
+    
+    public int accountNumber() {
+        int accNumber = 0;
+        try {
+            String statement;
+            statement = "SELECT accNumber FROM account;";
+            System.out.println(statement);
+            ResultSet rs = DBHandler.getInstance().conn.createStatement().executeQuery(statement);
+            
+            while (rs.next()) {
+                System.out.println(rs.getString("accNumber"));
+                accNumber = rs.getInt("accNumber");
+            }
+            accNumber++;
+            
+        } catch (SQLException ex) {
+            
+        }
+        return accNumber;
+    }
+    
 }

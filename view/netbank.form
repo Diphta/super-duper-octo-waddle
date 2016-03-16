@@ -275,6 +275,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="New Costumer"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
               <Properties>
@@ -350,9 +353,7 @@
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="createRegnr" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
-                                      <Component id="createBalance" alignment="1" max="32767" attributes="0"/>
                                       <Component id="createAccount" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="accType" alignment="1" pref="156" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -397,15 +398,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="createBalance" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="createEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="createEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="accType" min="-2" max="-2" attributes="0"/>
@@ -456,24 +451,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="CreatePhone">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField6"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="createEmail">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField7"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="createUsername">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField8"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="createPswrd">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField9"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="accesInfo">
               <Properties>
@@ -492,19 +475,9 @@
                 <Property name="text" type="java.lang.String" value="4700"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="createBalance">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField11"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reg. Nr."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Balance"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="accType">

@@ -83,9 +83,7 @@ public class netbank extends javax.swing.JFrame {
         createPswrd = new javax.swing.JTextField();
         accesInfo = new javax.swing.JComboBox();
         createRegnr = new javax.swing.JTextField();
-        createBalance = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         accType = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -191,6 +189,11 @@ public class netbank extends javax.swing.JFrame {
         jButton2.setText("Søg");
 
         jButton3.setText("New Costumer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextField4.setText("Interest");
 
@@ -288,23 +291,11 @@ public class netbank extends javax.swing.JFrame {
 
         jLabel5.setText("Telephone");
 
-        CreatePhone.setText("jTextField6");
-
-        createEmail.setText("jTextField7");
-
-        createUsername.setText("jTextField8");
-
-        createPswrd.setText("jTextField9");
-
         accesInfo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         createRegnr.setText("4700");
 
-        createBalance.setText("jTextField11");
-
         jLabel6.setText("Reg. Nr.");
-
-        jLabel7.setText("Balance");
 
         accType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -342,9 +333,7 @@ public class netbank extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(createRegnr, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(createBalance, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(createAccount, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(accType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 156, Short.MAX_VALUE))))
                     .addGroup(newCostumerPanelLayout.createSequentialGroup()
                         .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,13 +365,9 @@ public class netbank extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(CreatePhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(createEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newCostumerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(accType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -594,7 +579,14 @@ public class netbank extends javax.swing.JFrame {
         Customer customer = new Customer(createName.getText(), Integer.parseInt(CreatePhone.getText()), createEmail.getText(), 
                 createUsername.getText(), createPswrd.getText(), "Customer");
         CustomerHandler.getInstance().saveCustomer(customer);
+        Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, WIDTH, "Ny konto", "Current");
+        AccountHandler.getInstance().saveAccount(account);
     }//GEN-LAST:event_createCustomerActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        CardLayout cl = (CardLayout) jPanel2.getLayout();
+        cl.next(jPanel2);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -640,7 +632,6 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JComboBox actionBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JTextField createAccount;
-    private javax.swing.JTextField createBalance;
     private javax.swing.JButton createCustomer;
     private javax.swing.JTextField createEmail;
     private javax.swing.JTextField createName;
@@ -662,7 +653,6 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
