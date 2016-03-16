@@ -108,7 +108,7 @@ public class AccountHandler {
     public void cancelTransaction() {
         String stmt;
         String stmt1;
-        stmt = "reroll;";
+        stmt = "rollback;";
         System.out.println(stmt);
         try {
            DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
