@@ -16,11 +16,11 @@ import java.util.logging.Logger;
  * @author Tanja
  */
 public class DBHandler {
-    String url = "jdbc:mysql://localhost:3306";
-    String user = "root";
-    String pswrd = "root";
-    String schema = "/bankProjekt";
-    String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private String url = "jdbc:mysql://localhost:3306";
+    private String user = "root";
+    private String pswrd = "root";
+    private String schema = "/bankProjekt";
+    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     Connection conn;
     //Auto-Commit til false
     
