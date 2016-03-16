@@ -452,6 +452,11 @@ public class netbank extends javax.swing.JFrame {
         });
 
         transactionCancel.setText("Cancel last transaction ");
+        transactionCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionCancelActionPerformed(evt);
+            }
+        });
 
         accountTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Type", "Saving", "Current" }));
 
@@ -732,9 +737,13 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void completeTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTransactionButtonActionPerformed
-//        Account account 
-//        account.setBalance(Integer.parseInt(depositField.getText()));
-//        AccountHandler.getInstance().depositToAcc(account);
+        Account account = (Account) fromOwnAccountBox.getSelectedItem();
+        Account target = (Account) toOwnAccountBox.getSelectedItem();
+        account.deposit(target, Integer.parseInt(amountField.getText()));
+        AccountHandler.getInstance().depositToAcc(account);
+        AccountHandler.getInstance().depositToAcc(target);
+        CardLayout cl = (CardLayout) jPanel2.getLayout();
+        cl.previous(jPanel2);
     }//GEN-LAST:event_completeTransactionButtonActionPerformed
 
     private void transactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionButtonActionPerformed
@@ -746,6 +755,10 @@ public class netbank extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_transactionButtonActionPerformed
+
+    private void transactionCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCancelActionPerformed
+        AccountHandler.getInstance().cancelTransaction();
+    }//GEN-LAST:event_transactionCancelActionPerformed
 
     /**
      * @param args the command line arguments

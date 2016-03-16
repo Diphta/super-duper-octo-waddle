@@ -105,4 +105,15 @@ public class AccountHandler {
        }
     }
     
+    public void cancelTransaction() {
+        String stmt;
+        String stmt1;
+        stmt = "reroll;";
+        System.out.println(stmt);
+        try {
+           DBHandler.getInstance().conn.createStatement().executeUpdate(stmt);
+       } catch (SQLException ex) {
+           System.out.println("SQLException" + ex.getMessage());
+       }
+    }
 }

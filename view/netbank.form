@@ -683,6 +683,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancel last transaction "/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionCancelActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="accountTypeBox">
               <Properties>

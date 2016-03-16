@@ -78,6 +78,9 @@ public class Account {
         return accountName;
     }
     
-    
+    public void deposit(Account account, int amount) {
+        balance = balance - amount;
+        account.setBalance(amount);
+    }
     
 }
