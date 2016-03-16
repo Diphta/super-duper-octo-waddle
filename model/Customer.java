@@ -18,7 +18,7 @@ public class Customer {
     private String email;
     private String username;
     private String password;
-    private ArrayList<Account> konti;
+    private ArrayList<Account> accounts;
     private String accessInfo;
     private int idCustmr;
 
@@ -42,11 +42,11 @@ public class Customer {
         return name;
     }
     
-    public ArrayList<Account> getKonti() {
-        return konti;
+    public ArrayList<Account> getAccounts() {
+        return accounts;
     }
-    public void addAccount() {
-        
+    public void addAccount(Account account) {
+        accounts.add(account);
     }
 
     public int getPhone() {
@@ -72,6 +72,10 @@ public class Customer {
     public int getIdCustmr() {
         return idCustmr;
     }
+    
+    public void setAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
+    } 
     
    
     

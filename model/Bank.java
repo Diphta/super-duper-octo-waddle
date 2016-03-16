@@ -36,6 +36,17 @@ public class Bank {
     public void setTotalBalance(long totalBalance) {
         this.totalBalance = totalBalance;
     }
-
     
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
+    
+    public Customer getCostumer(int idCustmr) {
+//        for (Customer customer : customers) {
+//            //if der sammenligner customer id med customer id fra databasen gennem custhandler?
+//            
+//        }
+          return customers.get(idCustmr);
+    }
+            
     }

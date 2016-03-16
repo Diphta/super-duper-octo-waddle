@@ -99,8 +99,7 @@ public class netbank extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
         newAccount = new javax.swing.JButton();
-        actionBox = new javax.swing.JComboBox();
-        selectAction = new javax.swing.JButton();
+        transactionButton = new javax.swing.JButton();
         transactionCancel = new javax.swing.JButton();
         accountTypeBox = new javax.swing.JComboBox();
         LogUserOut = new javax.swing.JButton();
@@ -170,7 +169,7 @@ public class netbank extends javax.swing.JFrame {
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(loginErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,9 +442,12 @@ public class netbank extends javax.swing.JFrame {
             }
         });
 
-        actionBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        selectAction.setText("Select");
+        transactionButton.setText("Transaction");
+        transactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionButtonActionPerformed(evt);
+            }
+        });
 
         transactionCancel.setText("Cancel last transaction ");
 
@@ -466,29 +468,24 @@ public class netbank extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                        .addComponent(LogUserOut)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(transactionCancel))
+                        .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                        .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
+                                .addComponent(customerNameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
+                                .addComponent(accountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(actionBox, 0, 304, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(customerKontiPanelLayout.createSequentialGroup()
-                                .addComponent(selectAction, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
-                                .addGap(0, 118, Short.MAX_VALUE)
-                                .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
-                                        .addComponent(customerNameLable, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(17, 17, 17))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerKontiPanelLayout.createSequentialGroup()
-                                        .addComponent(accountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(newAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                            .addComponent(transactionButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(transactionCancel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LogUserOut))))
         );
         customerKontiPanelLayout.setVerticalGroup(
             customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,26 +498,21 @@ public class netbank extends javax.swing.JFrame {
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(newAccount)
                             .addComponent(accountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(transactionCancel))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(customerKontiPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
+                        .addComponent(transactionButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(customerKontiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(actionBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selectAction))
-                        .addGap(73, 73, 73)
-                        .addComponent(LogUserOut)
-                        .addContainerGap())))
+                            .addComponent(transactionCancel)
+                            .addComponent(LogUserOut))))
+                .addContainerGap())
         );
 
         jPanel2.add(customerKontiPanel, "card5");
-
-        fromOwnAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        toOwnAccountBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setText("From own account");
 
@@ -528,15 +520,16 @@ public class netbank extends javax.swing.JFrame {
 
         jLabel12.setText("To another account");
 
-        anotherAccountRegNrField.setText("jTextField1");
-
-        anotherAccountAccNrField.setText("jTextField2");
-
         jLabel13.setText("Reg.Nr");
 
         jLabel14.setText("Account Number");
 
         completeTransactionButton.setText("Complete Transaction");
+        completeTransactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completeTransactionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout transactionPanelLayout = new javax.swing.GroupLayout(transactionPanel);
         transactionPanel.setLayout(transactionPanelLayout);
@@ -546,8 +539,8 @@ public class netbank extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(fromOwnAccountBox, 0, 268, Short.MAX_VALUE)
-                        .addComponent(toOwnAccountBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(fromOwnAccountBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(toOwnAccountBox, 0, 268, Short.MAX_VALUE))
                     .addComponent(jLabel7)
                     .addComponent(jLabel11)
                     .addGroup(transactionPanelLayout.createSequentialGroup()
@@ -656,6 +649,9 @@ public class netbank extends javax.swing.JFrame {
                 if (customer.getAccessInfo().equalsIgnoreCase("Customer")) {
                     cl.addLayoutComponent("CustomerPanel", customerKontiPanel);
                     cl.show(jPanel2, "CustomerPanel");
+                    customer.setAccounts(AccountHandler.getInstance().lookUpAccount(2));
+                    bank.addCustomer(customer);
+                    
                 } else {
                     cl.next(jPanel2);
                 }
@@ -722,6 +718,21 @@ public class netbank extends javax.swing.JFrame {
         AccountHandler.getInstance().depositToAcc(account);
     }//GEN-LAST:event_depositButtonActionPerformed
 
+    private void completeTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTransactionButtonActionPerformed
+//        Account account 
+//        account.setBalance(Integer.parseInt(depositField.getText()));
+//        AccountHandler.getInstance().depositToAcc(account);
+    }//GEN-LAST:event_completeTransactionButtonActionPerformed
+
+    private void transactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionButtonActionPerformed
+        CardLayout cl = (CardLayout) jPanel2.getLayout();
+        cl.next(jPanel2);
+        for (Account acc : bank.getCostumer(0).getAccounts()) {
+           fromOwnAccountBox.addItem(acc); 
+        }
+        
+    }//GEN-LAST:event_transactionButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -764,7 +775,6 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JComboBox accesInfo;
     private javax.swing.JComboBox accountBox;
     private javax.swing.JComboBox accountTypeBox;
-    private javax.swing.JComboBox actionBox;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JTextField anotherAccountAccNrField;
     private javax.swing.JTextField anotherAccountRegNrField;
@@ -824,8 +834,8 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordLoginField;
     private javax.swing.JPanel receipt;
     private javax.swing.JButton searchButton;
-    private javax.swing.JButton selectAction;
     private javax.swing.JComboBox toOwnAccountBox;
+    private javax.swing.JButton transactionButton;
     private javax.swing.JButton transactionCancel;
     private javax.swing.JPanel transactionPanel;
     private javax.swing.JLabel usernameLabel;
