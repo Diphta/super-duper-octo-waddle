@@ -8,8 +8,7 @@ package view;
 import dao.AccountHandler;
 import dao.CustomerHandler;
 import java.awt.CardLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Account;
@@ -22,7 +21,7 @@ import model.Customer;
  * @author Tanja,Philip,Simon & Dino
  */
 public class netbank extends javax.swing.JFrame {
-
+    Customer customer;
     Bank bank;
     Administrator admin;
     private String loginErrorMessage = "Ugyldigt brugernavn og/eller kodeord.";
@@ -34,11 +33,19 @@ public class netbank extends javax.swing.JFrame {
         initComponents();
         bank = new Bank();
         admin = new Administrator();
-//        Customer cust = new Customer("Karl Johansen", 20495867, "karl@gmail.com", "Karl2452", "eds222", "Customer");
-//        admin.addCustomer(cust);
-//        cust = CustomerHandler.getInstance().lookUpCustomer("Simon");
-//        System.out.println(cust.getName() + "\t" + cust.getPhone() + "\t" + cust.getEmail() + "\t" + cust.getUsername());
-
+        
+    }
+    
+    public void createAccountFields(Customer customer) {
+        for (int i = 0; i < customer.getAccounts().size(); i++) {
+                        JTextField textField = new JTextField("");
+                        textField.setBounds(6, 35 * i, 315, 30);
+                        customerKontiPanel.add(textField);
+                        customerKontiPanel.revalidate();
+                        customerKontiPanel.repaint();
+                        textField.setText(customer.getAccounts().get(i).toString());
+                        textField.setEditable(false);
+                    }
     }
 
     /**
@@ -108,6 +115,7 @@ public class netbank extends javax.swing.JFrame {
         completeTransactionButton = new javax.swing.JButton();
         amountField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        backFromTransactionButton = new javax.swing.JButton();
         receipt = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -486,6 +494,13 @@ public class netbank extends javax.swing.JFrame {
 
         jLabel15.setText("Amount");
 
+        backFromTransactionButton.setText("Back");
+        backFromTransactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backFromTransactionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout transactionPanelLayout = new javax.swing.GroupLayout(transactionPanel);
         transactionPanel.setLayout(transactionPanelLayout);
         transactionPanelLayout.setHorizontalGroup(
@@ -494,7 +509,8 @@ public class netbank extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transactionPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(backFromTransactionButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(completeTransactionButton))
                     .addGroup(transactionPanelLayout.createSequentialGroup()
                         .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,7 +561,9 @@ public class netbank extends javax.swing.JFrame {
                     .addComponent(anotherAccountRegNrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(anotherAccountAccNrField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(completeTransactionButton)
+                .addGroup(transactionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(completeTransactionButton)
+                    .addComponent(backFromTransactionButton))
                 .addContainerGap())
         );
 
@@ -607,7 +625,7 @@ public class netbank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        Customer customer = null;
+       
         try {
             String username = usernameLoginField.getText();
             String password = new String(passwordLoginField.getPassword());
@@ -618,18 +636,9 @@ public class netbank extends javax.swing.JFrame {
                 if (customer.getAccessInfo().equalsIgnoreCase("Customer")) {
                     cl.addLayoutComponent("CustomerPanel", customerKontiPanel);
                     cl.show(jPanel2, "CustomerPanel");
-                    customer.setAccounts(AccountHandler.getInstance().lookUpAccount(2));
-                    for (int i = 0; i < customer.getAccounts().size(); i++) {
-                        JTextField textField = new JTextField("");
-                        textField.setBounds(6, 35 * i, 315, 30);
-                        customerKontiPanel.add(textField);
-                        customerKontiPanel.revalidate();
-                        customerKontiPanel.repaint();
-                        textField.setText(customer.getAccounts().get(i).toString());
-                        textField.setEditable(false);
-                    }
+                    customer.setAccounts(AccountHandler.getInstance().lookUpAccount(customer.getIdCustmr()));
+                    createAccountFields(customer);
                     bank.addCustomer(customer);
-                    
                 } else {
                     cl.next(jPanel2);
                 }
@@ -637,7 +646,8 @@ public class netbank extends javax.swing.JFrame {
                 System.out.println("access denied");
                 loginErrorLabel.setText(loginErrorMessage);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            
             e.printStackTrace();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -645,14 +655,17 @@ public class netbank extends javax.swing.JFrame {
     private void newAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAccountActionPerformed
         String str = (String) accountTypeBox.getSelectedItem();
         if (!str.equals("Type")) {
+        if (!(customer.getAccounts().size() == 5)) {
         String accountName = JOptionPane.showInputDialog("Please enter a name for your account");
-        Account account = new Account(NORMAL, 4700, 0, 2, accountName, (String) accountTypeBox.getSelectedItem());
+        Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, 2, accountName, (String) accountTypeBox.getSelectedItem());
         AccountHandler.getInstance().saveAccount(account);
+        customer.addAccount(account);
         JTextField textField = new JTextField("");
-        textField.setBounds(6, 75, 304, 30);
+        textField.setBounds(6, 35 * (customer.getAccounts().size()-1), 315, 30);
         customerKontiPanel.add(textField);
         customerKontiPanel.revalidate();
         customerKontiPanel.repaint();
+        }
         } else {
             JOptionPane.showMessageDialog(this, "Please select an account type");
         }
@@ -703,6 +716,7 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void completeTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTransactionButtonActionPerformed
+        if (Math.signum(Double.parseDouble(amountField.getText())) > 0) {
         Account account = (Account) fromOwnAccountBox.getSelectedItem();
         Account target = (Account) toOwnAccountBox.getSelectedItem();
         account.deposit(target, Integer.parseInt(amountField.getText()));
@@ -710,6 +724,9 @@ public class netbank extends javax.swing.JFrame {
         AccountHandler.getInstance().depositToAcc(target);
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.previous(jPanel2);
+        } else {
+            JOptionPane.showMessageDialog(this, "You can't deposit negative numbers");
+        }
     }//GEN-LAST:event_completeTransactionButtonActionPerformed
 
     private void transactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionButtonActionPerformed
@@ -737,6 +754,11 @@ public class netbank extends javax.swing.JFrame {
     private void acceptReceiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptReceiptButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_acceptReceiptButtonActionPerformed
+
+    private void backFromTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backFromTransactionButtonActionPerformed
+        CardLayout cl = (CardLayout) jPanel2.getLayout();
+        cl.previous(jPanel2);
+    }//GEN-LAST:event_backFromTransactionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -783,6 +805,7 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JTextField amountField;
     private javax.swing.JTextField anotherAccountAccNrField;
     private javax.swing.JTextField anotherAccountRegNrField;
+    private javax.swing.JButton backFromTransactionButton;
     private javax.swing.JButton completeTransactionButton;
     private javax.swing.JButton createCustomer;
     private javax.swing.JTextField createEmail;

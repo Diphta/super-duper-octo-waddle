@@ -74,7 +74,9 @@ public class Customer {
         this.accounts = accounts;
     } 
     
-   
+   public void addAccount(Account account) {
+       accounts.add(account);
+   }
     
     
 }
