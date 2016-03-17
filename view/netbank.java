@@ -8,9 +8,13 @@ package view;
 import dao.AccountHandler;
 import dao.CustomerHandler;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import model.Account;
 import model.Bank;
 import model.Customer;
@@ -21,6 +25,8 @@ import model.Customer;
  */
 public class netbank extends javax.swing.JFrame {
     private Customer customer;
+    private ArrayList<JTextField> accountFields;
+    private final Timer timer;
     private Bank bank;
     private final String loginErrorMessage = "Ugyldigt brugernavn og/eller kodeord.";
 
@@ -30,6 +36,15 @@ public class netbank extends javax.swing.JFrame {
     public netbank() {
         initComponents();
         bank = new Bank();
+        accountFields = new ArrayList<>();
+        timer = new Timer(1000, new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               update();
+            }
+        });
+        
 
     }
 
@@ -37,11 +52,18 @@ public class netbank extends javax.swing.JFrame {
         for (int i = 0; i < customer.getAccounts().size(); i++) {
             JTextField textField = new JTextField("");
             textField.setBounds(6, 35 * i, 315, 30);
+            accountFields.add(textField);
             customerKontiPanel.add(textField);
             customerKontiPanel.revalidate();
             customerKontiPanel.repaint();
             textField.setText(customer.getAccounts().get(i).toString());
             textField.setEditable(false);
+        }
+    }
+    
+    public void update() {
+        for (int i = 0; i < customer.getAccounts().size(); i++) {
+            accountFields.get(i).setText(customer.getAccounts().get(i).toString());   
         }
     }
 
@@ -635,6 +657,7 @@ public class netbank extends javax.swing.JFrame {
                     customer.setAccounts(AccountHandler.getInstance().lookUpAccount(customer.getIdCustmr()));
                     createAccountFields(customer);
                     bank.addCustomer(customer);
+                    timer.start();
                 } else {
                     cl.next(jPanel2);
                 }
@@ -662,6 +685,7 @@ public class netbank extends javax.swing.JFrame {
                 customerKontiPanel.add(textField);
                 customerKontiPanel.revalidate();
                 customerKontiPanel.repaint();
+                accountFields.add(textField);
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(this, "Difficulties with database connection");
                 }
