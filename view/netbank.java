@@ -716,14 +716,16 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void completeTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTransactionButtonActionPerformed
-        if (Math.signum(Double.parseDouble(amountField.getText())) > 0) {
         Account account = (Account) fromOwnAccountBox.getSelectedItem();
         Account target = (Account) toOwnAccountBox.getSelectedItem();
+        if (Math.signum(Double.parseDouble(amountField.getText())) > 0 && account.getAccountNumber() != target.getAccountNumber()) {
         account.deposit(target, Integer.parseInt(amountField.getText()));
         AccountHandler.getInstance().depositToAcc(account);
         AccountHandler.getInstance().depositToAcc(target);
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.previous(jPanel2);
+        } else if (account.getAccountNumber() == target.getAccountNumber()) {
+            JOptionPane.showMessageDialog(this, "You can't deposit to the same account");
         } else {
             JOptionPane.showMessageDialog(this, "You can't deposit negative numbers");
         }
