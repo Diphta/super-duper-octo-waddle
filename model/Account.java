@@ -33,7 +33,7 @@ public class Account {
  
     @Override
     public String toString() {
-        return accountName + "\t" + accountNumber + "\t" + balance + "kr.";
+        return accountName + "   " + accountNumber + "   " + balance + "kr.";
     }
     
     
