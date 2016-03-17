@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Account;
-import model.Administrator;
 import model.Bank;
 import model.Customer;
 
@@ -21,10 +20,9 @@ import model.Customer;
  * @author Tanja,Philip,Simon & Dino
  */
 public class netbank extends javax.swing.JFrame {
-    Customer customer;
-    Bank bank;
-    Administrator admin;
-    private String loginErrorMessage = "Ugyldigt brugernavn og/eller kodeord.";
+    private Customer customer;
+    private Bank bank;
+    private final String loginErrorMessage = "Ugyldigt brugernavn og/eller kodeord.";
 
     /**
      * Creates new form netbank
@@ -32,20 +30,19 @@ public class netbank extends javax.swing.JFrame {
     public netbank() {
         initComponents();
         bank = new Bank();
-        admin = new Administrator();
-        
+
     }
-    
+
     public void createAccountFields(Customer customer) {
         for (int i = 0; i < customer.getAccounts().size(); i++) {
-                        JTextField textField = new JTextField("");
-                        textField.setBounds(6, 35 * i, 315, 30);
-                        customerKontiPanel.add(textField);
-                        customerKontiPanel.revalidate();
-                        customerKontiPanel.repaint();
-                        textField.setText(customer.getAccounts().get(i).toString());
-                        textField.setEditable(false);
-                    }
+            JTextField textField = new JTextField("");
+            textField.setBounds(6, 35 * i, 315, 30);
+            customerKontiPanel.add(textField);
+            customerKontiPanel.revalidate();
+            customerKontiPanel.repaint();
+            textField.setText(customer.getAccounts().get(i).toString());
+            textField.setEditable(false);
+        }
     }
 
     /**
@@ -625,7 +622,6 @@ public class netbank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-       
         try {
             String username = usernameLoginField.getText();
             String password = new String(passwordLoginField.getPassword());
@@ -655,21 +651,25 @@ public class netbank extends javax.swing.JFrame {
     private void newAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAccountActionPerformed
         String str = (String) accountTypeBox.getSelectedItem();
         if (!str.equals("Type")) {
-        if (!(customer.getAccounts().size() == 5)) {
-        String accountName = JOptionPane.showInputDialog("Please enter a name for your account");
-        Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, 2, accountName, (String) accountTypeBox.getSelectedItem());
-        AccountHandler.getInstance().saveAccount(account);
-        customer.addAccount(account);
-        JTextField textField = new JTextField("");
-        textField.setBounds(6, 35 * (customer.getAccounts().size()-1), 315, 30);
-        customerKontiPanel.add(textField);
-        customerKontiPanel.revalidate();
-        customerKontiPanel.repaint();
-        }
+            if (!(customer.getAccounts().size() == 5)) {
+                try {
+                String accountName = JOptionPane.showInputDialog("Please enter a name for your account");
+                Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, 2, accountName, (String) accountTypeBox.getSelectedItem());
+                AccountHandler.getInstance().saveAccount(account);
+                customer.addAccount(account);
+                JTextField textField = new JTextField("");
+                textField.setBounds(6, 35 * (customer.getAccounts().size() - 1), 315, 30);
+                customerKontiPanel.add(textField);
+                customerKontiPanel.revalidate();
+                customerKontiPanel.repaint();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(this, "Difficulties with database connection");
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Please select an account type");
         }
-        
+
 
     }//GEN-LAST:event_newAccountActionPerformed
 
@@ -679,18 +679,21 @@ public class netbank extends javax.swing.JFrame {
 
         usernameLoginField.setText("");
         passwordLoginField.setText("");
-        
-        
 
 
     }//GEN-LAST:event_LogUserOutActionPerformed
 
     private void createCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomerActionPerformed
-        Customer customer = new Customer(createName.getText(), Integer.parseInt(CreatePhone.getText()), createEmail.getText(), 
-                createUsername.getText(), createPswrd.getText(), "Customer", CustomerHandler.getInstance().customerNumber());
+        try {
+        customer = new Customer(createName.getText(), Integer.parseInt(CreatePhone.getText()), createEmail.getText(),
+        createUsername.getText(), createPswrd.getText(), "Customer", CustomerHandler.getInstance().customerNumber());
         CustomerHandler.getInstance().saveCustomer(customer);
         Account account = new Account(AccountHandler.getInstance().accountNumber(), 4700, 0, customer.getIdCustmr(), "Ny konto", "Current");
         AccountHandler.getInstance().saveAccount(account);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Difficulties with database connection");
+        }
+        
     }//GEN-LAST:event_createCustomerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -700,7 +703,7 @@ public class netbank extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String str = "";
-        Customer customer = CustomerHandler.getInstance().lookUpCustomer(customerSearchField.getText());
+        customer = CustomerHandler.getInstance().lookUpCustomer(customerSearchField.getText());
         str = customer.toString() + "\n";
         for (Account acc : AccountHandler.getInstance().lookUpAccount(customer.getIdCustmr())) {
             str += "\n" + acc.toString() + "\n";
@@ -721,13 +724,15 @@ public class netbank extends javax.swing.JFrame {
         if (Math.signum(Double.parseDouble(amountField.getText())) > 0 && account.getAccountNumber() != target.getAccountNumber()) {
             if (account.getBalance() < Double.parseDouble(amountField.getText())) {
                 JOptionPane.showMessageDialog(this, "Insufficient funds");
+
             } else {
-        account.deposit(target, Integer.parseInt(amountField.getText()));
-        AccountHandler.getInstance().depositToAcc(account);
-        AccountHandler.getInstance().depositToAcc(target);
-        CardLayout cl = (CardLayout) jPanel2.getLayout();
-        cl.previous(jPanel2);
+                account.deposit(target, Integer.parseInt(amountField.getText()));
+                AccountHandler.getInstance().depositToAcc(account);
+                AccountHandler.getInstance().depositToAcc(target);
+                CardLayout cl = (CardLayout) jPanel2.getLayout();
+                cl.previous(jPanel2);
             }
+
         } else if (account.getAccountNumber() == target.getAccountNumber()) {
             JOptionPane.showMessageDialog(this, "You can't deposit to the same account");
         } else {
@@ -739,10 +744,10 @@ public class netbank extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) jPanel2.getLayout();
         cl.next(jPanel2);
         for (Account acc : customer.getAccounts()) {
-           fromOwnAccountBox.addItem(acc); 
-           toOwnAccountBox.addItem(acc);
+            fromOwnAccountBox.addItem(acc);
+            toOwnAccountBox.addItem(acc);
         }
-        
+
     }//GEN-LAST:event_transactionButtonActionPerformed
 
     private void transactionCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCancelActionPerformed

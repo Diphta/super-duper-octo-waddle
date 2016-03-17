@@ -30,24 +30,17 @@ public class AccountHandler {
         private static final AccountHandler INSTANCE = new AccountHandler();
     }
     
-    public void saveAccount (Account account) {
+    public void saveAccount (Account account) throws SQLException {
        String statement;
        statement = "INSERT INTO account (accNumber, regNr, accName, accType, balance, idCustmr)"
                + " VALUES ( '" + account.getAccountNumber()+
                "','"  + account.getRegNumber() + "','" + account.getAccountName() + "','"  
                + account.getAccountType() + "','"  + account.getBalance() + "','"  +
                account.getCustomerId()+ "')";
-       
-       try {
-           DBHandler.getInstance().conn.createStatement().executeUpdate(statement);
-       } catch (SQLException ex) {
-           System.out.println(statement);
-           System.out.println("SQLException" + ex.getMessage());
-       }
-             
+               DBHandler.getInstance().conn.createStatement().executeUpdate(statement);       
     }
     
-    public int accountNumber() {
+    public int accountNumber() throws SQLException {
         int accNumber = 0;
         try {
             String statement;
