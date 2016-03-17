@@ -8,6 +8,8 @@ package view;
 import dao.AccountHandler;
 import dao.CustomerHandler;
 import java.awt.CardLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Account;
@@ -114,7 +116,7 @@ public class netbank extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton7 = new javax.swing.JButton();
+        acceptReceiptButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -569,7 +571,12 @@ public class netbank extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jButton7.setText("Accept");
+        acceptReceiptButton.setText("Accept");
+        acceptReceiptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptReceiptButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout receiptLayout = new javax.swing.GroupLayout(receipt);
         receipt.setLayout(receiptLayout);
@@ -581,7 +588,7 @@ public class netbank extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(acceptReceiptButton)
                 .addContainerGap())
         );
         receiptLayout.setVerticalGroup(
@@ -593,7 +600,7 @@ public class netbank extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                     .addGroup(receiptLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7)))
+                        .addComponent(acceptReceiptButton)))
                 .addContainerGap())
         );
 
@@ -641,6 +648,8 @@ public class netbank extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void newAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAccountActionPerformed
+        String str = (String) accountTypeBox.getSelectedItem();
+        if (!str.equals("Type")) {
         String accountName = JOptionPane.showInputDialog("Please enter a name for your account");
         Account account = new Account(NORMAL, 4700, 0, 2, accountName, (String) accountTypeBox.getSelectedItem());
         AccountHandler.getInstance().saveAccount(account);
@@ -649,6 +658,10 @@ public class netbank extends javax.swing.JFrame {
         customerKontiPanel.add(textField);
         customerKontiPanel.revalidate();
         customerKontiPanel.repaint();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select an account type");
+        }
+        
 
     }//GEN-LAST:event_newAccountActionPerformed
 
@@ -726,6 +739,10 @@ public class netbank extends javax.swing.JFrame {
         passwordLoginField.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void acceptReceiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptReceiptButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acceptReceiptButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -764,6 +781,7 @@ public class netbank extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CreatePhone;
     private javax.swing.JButton LogUserOut;
+    private javax.swing.JButton acceptReceiptButton;
     private javax.swing.JComboBox accountBox;
     private javax.swing.JComboBox accountTypeBox;
     private javax.swing.JPanel adminPanel;
@@ -787,7 +805,6 @@ public class netbank extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
